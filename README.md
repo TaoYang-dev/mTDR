@@ -7,7 +7,7 @@ Enrichment-based chromatin profiling sequencing experiments have become essentia
 
 ## Citation
 
-Cite the following paper: To be added.
+Cite the following paper: to be added.
 
 ## Installation
 
