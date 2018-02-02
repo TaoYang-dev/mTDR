@@ -166,5 +166,5 @@ imply poor reproducibility.
 ## Computation efficiency
 
 Given a pair of replicated samples that has 450K matched genomic bins (typical
-size after preprocess for ChIP-seq data), it takes 2.5 min on a laptop with 
+size after preprocessing for ChIP-seq data), it takes 2.5 min on a laptop with 
 2.6GHz Intel Core i7-6600U and 8Gb of RAM.
