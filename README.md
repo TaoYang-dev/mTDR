@@ -11,7 +11,7 @@ Cite the following paper: to be added.
 
 ## Installation
 
-Download the source package [mTDR.0.99.0.gz](https://github.com/MonkeyLB/mTDR/blob/master/mTDR_0.99.0.tar.gz) from Github. Or install it from Bioconductor.
+Download the source package [mTDR_0.99.0.gz](https://github.com/MonkeyLB/mTDR/blob/master/mTDR_0.99.0.tar.gz) from Github. Or install it from Bioconductor.
 
 ## Method overview
 
