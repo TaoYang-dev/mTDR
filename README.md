@@ -22,7 +22,7 @@ We quantify the correlation of the enriched signals by using upper tail dependen
 The upper tail dependence alone is not sufficient to depict the whole picture of the data reproducibility as it only describes the local correlation at the tail. We introduce a Gaussian copula to capture the correlation of the bulk of the data. The Gaussian copula does not have upper tail dependence, but it has a parameter that measures the correlation in general. In fact, because typically the data points at the tail only takes up a small proportion, the bulk correlation parameter greatly depends on the relatively weak signals that are not at the tail. Therefore, we can use the correlation parameter from the Gaussian copula to complementarily capture the correlation of data that is not described by tail dependence of the s-Clayton copula. Combining the two copulas, we constructed a flexible mixture model that can fit a wide range of ChIP-seq data with different degrees of enrichment and signal characteristics.
 
 
-[Figure1. Mixture copula model to evaluate the reproducibility of ChIP-seq data](https://github.com/MonkeyLB/mTDR/blob/master/vignettes/Figure1.JPG)
+![Figure1. Mixture copula model to evaluate the reproducibility of ChIP-seq data](https://github.com/MonkeyLB/mTDR/blob/master/vignettes/Figure1.JPG)
 
 ## Preprocessing your data
 
