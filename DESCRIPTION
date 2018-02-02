@@ -1,0 +1,35 @@
+Package: mTDR
+Type: Package
+Title: Comprehensively evaluate the reproducibility of chromatin profiling sequencing data
+Version: 0.99.1
+Authors@R: c(person("Tao", "Yang", email = "xadmyangt@gmail.com", role = c("aut", "cre")))
+Description: Enrichment-based chromatin profiling sequencing experiments have become 
+             essential tools to investigate the functional roles of genomic regions. 
+             Measuring reproducibility is central to the data quality control, and 
+             critical to ensure thecredibility of scientific discoveries. Evaluating
+             the reproducibility of enrichment-based sequencing data is complicated 
+             by the variation of enrichment characteristics and the heterogeneous 
+             correlation structure between replicated samples. We present a 
+             model-based method to comprehensively assess the reproducibility between
+             replicated samples. The method only requires minimum preprocessing of 
+             raw data and does not rely on peak calling. Thus it involves less 
+             information loss than the peak level reproducibility measure. The model 
+             is designed to assess three aspects of the data reproducibility ? the 
+             dependence between the enriched signals, the bulk correlation across 
+             whole range of signal values, and the degree of lack of enrichment. 
+             By the combination of the three quantities, our model is flexible to 
+             assess the reproducibility of data with different signal types 
+             (i.e., narrow-peak, broad-peak) and enrichment levels. We demonstrate
+             that our method is also more accurate than the other existing measures. 
+bioViews: chromatin profiling sequencing, ChIP-seq, ATAC-seq, DNAse-seq, reproducibility
+Depends: R (>= 3.3)
+Imports: stats, testthat
+License: GPL (>= 2.0)
+Encoding: UTF-8
+LazyData: true
+Author: Tao Yang [aut, cre]
+Maintainer: Tao Yang <xadmyangt@gmail.com>
+Suggests: knitr,
+    rmarkdown
+RoxygenNote: 6.0.1
+VignetteBuilder: knitr
