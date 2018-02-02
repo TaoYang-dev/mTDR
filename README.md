@@ -3,7 +3,7 @@ A model-based method to comprehensively evaluate the reproducibility of chromati
 
 ## Background
 
-Enrichment-based chromatin profiling sequencing experiments have become essential tools to investigate the functional roles of genomic regions. ChIP-seq, ATAC-seq and DNAse-seq are among the most popular experiments. Measuring reproducibility is central to the data quality control, and critical to ensure the credibility of scientific discoveries. Evaluating the reproducibility of enrichment-based sequencing data is complicated by the variation of enrichment characteristics and the heterogeneous correlation structure between replicated samples. We present a model-based method to comprehensively assess the reproducibility between replicated samples. The method only requires minimum preprocessing of raw data and does not rely on peak calling. Thus it involves less information loss than the peak level reproducibility measure. The model is designed to assess three aspects of the data reproducibility – the dependence between the enriched signals, the bulk correlation across whole range of signal values, and the degree of lack of enrichment. By the combination of the three quantities, our model is flexible to assess the reproducibility of data with different signal types (i.e., narrow peak, broad peak) and enrichment levels. We demonstrate that our method is also more accurate than the other existing measures.
+Enrichment-based chromatin profiling sequencing experiments have become essential tools to investigate the functional roles of genomic regions. ChIP-seq, ATAC-seq and DNAse-seq are among the most popular experiments. Measuring reproducibility is central to the data quality control, and critical to ensure the credibility of scientific discoveries. Evaluating the reproducibility of enrichment-based sequencing data is complicated by the variation of enrichment characteristics and the heterogeneous correlation structure between replicated samples. We present a model-based method to comprehensively assess the reproducibility between replicated samples. The method only requires minimum preprocessing of raw data and does not rely on peak calling. Thus it involves less information loss than the peak level reproducibility measure. The model is designed to assess three aspects of the data reproducibility – the dependence between the enriched signals, the bulk correlation across whole range of signal values, and the degree of lack of enrichment. By the combination of the three quantities, our model is flexible to assess the reproducibility of data with different signal types (i.e., narrow peak, broad peak) and enrichment levels. A workthrough of the analysis can be find in our package [vignette](https://github.com/MonkeyLB/mTDR/blob/master/vignettes/mTDR-vignette.Rmd)
 
 ## Citation
 
@@ -23,6 +23,8 @@ The upper tail dependence alone is not sufficient to depict the whole picture of
 
 
 ![Figure1. Mixture copula model to evaluate the reproducibility of ChIP-seq data](https://github.com/MonkeyLB/mTDR/blob/master/vignettes/Figure1.JPG)
+
+Figure1. Mixture copula model to evaluate the reproducibility of ChIP-seq data
 
 ## Preprocessing your data
 
