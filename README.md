@@ -32,7 +32,7 @@ We suggest to divide the genome into non-overlapping bins of 200 base pairs (bp)
 
 ## The format of input
 
-We include an example of preprocessed ChIP-seq data. The data has two columns. Each column is a set of signals(i.e., number of reads in each 200 bp genomic bin).
+We include an example of preprocessed ChIP-seq data in the package. The data has two columns. Each column is a set of signals(i.e., number of reads in each 200 bp genomic bin).
 
 
 ## Estimation
