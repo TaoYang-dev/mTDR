@@ -1,25 +1,26 @@
 # mTDR
 A model-based method to comprehensively evaluate the reproducibility of chromatin profiling sequencing data
 
-Background
+## Background
 
 Enrichment-based chromatin profiling sequencing experiments have become essential tools to investigate the functional roles of genomic regions. ChIP-seq, ATAC-seq and DNAse-seq are among the most popular experiments. Measuring reproducibility is central to the data quality control, and critical to ensure the credibility of scientific discoveries. Evaluating the reproducibility of enrichment-based sequencing data is complicated by the variation of enrichment characteristics and the heterogeneous correlation structure between replicated samples. We present a model-based method to comprehensively assess the reproducibility between replicated samples. The method only requires minimum preprocessing of raw data and does not rely on peak calling. Thus it involves less information loss than the peak level reproducibility measure. The model is designed to assess three aspects of the data reproducibility – the dependence between the enriched signals, the bulk correlation across whole range of signal values, and the degree of lack of enrichment. By the combination of the three quantities, our model is flexible to assess the reproducibility of data with different signal types (i.e., narrow peak, broad peak) and enrichment levels. We demonstrate that our method is also more accurate than the other existing measures.
 
-Citation
+## Citation
 
 Cite the following paper: To be added.
 
-Installation
+## Installation
 
 Download the source package mTDR.1.0.0.gz from Github. Or install it from Bioconductor.
 
-Method overview
+## Method overview
 
 A crucial step of ChIP-seq experiment is to enrich the targeted regions. The enriched signals are usually of the primary interest to biologists. Analyses of ChIP-seq data typically rely on peak calling. Our method directly models the binned reads rather than peaks, so it is independent of peak calling and is workable for broad peak data (i.e., most HM data). Our strategy is to handle heterogeneity by modeling the behavior of enriched signal and the background separately through mixture of two copulas. Unlike traditional probability distribution functions, copula models the structure of dependence between the cumulative densities of random variables (equivalent to ranks) rather than the variables’ original values.
 
 We quantify the correlation of the enriched signals by using upper tail dependence. Intuitively, upper tail dependence of two random variables is defined as the probability that one exceeds a given threshold of cumulative density t, conditioning on that the other has exceeded the same t as t → 1 from left. Upper tail dependence is suitable to quantify correlation between the enriched signals because it measures comovement of random variables toward the high end of data distribution. Since it’s defined based on cumulative density, it is scale-free and not affected by dynamic range of data values and outliers. Some copula models innately possess upper tail dependence. We thus can adopt a suitable copula to fit the data and estimate the upper tail dependence. We observe that the cumulative density of a pair of sufficiently enriched ChIP-seq replicates is best approximated by survival Clayton (s-Clayton) copula (Figure 1).
 
 The upper tail dependence alone is not sufficient to depict the whole picture of the data reproducibility as it only describes the local correlation at the tail. We introduce a Gaussian copula to capture the correlation of the bulk of the data. The Gaussian copula does not have upper tail dependence, but it has a parameter that measures the correlation in general. In fact, because typically the data points at the tail only takes up a small proportion, the bulk correlation parameter greatly depends on the relatively weak signals that are not at the tail. Therefore, we can use the correlation parameter from the Gaussian copula to complementarily capture the correlation of data that is not described by tail dependence of the s-Clayton copula. Combining the two copulas, we constructed a flexible mixture model that can fit a wide range of ChIP-seq data with different degrees of enrichment and signal characteristics.
+
 
 Figure1. Mixture copula model to evaluate the reproducibility of ChIP-seq data
 
