@@ -22,50 +22,29 @@ We quantify the correlation of the enriched signals by using upper tail dependen
 The upper tail dependence alone is not sufficient to depict the whole picture of the data reproducibility as it only describes the local correlation at the tail. We introduce a Gaussian copula to capture the correlation of the bulk of the data. The Gaussian copula does not have upper tail dependence, but it has a parameter that measures the correlation in general. In fact, because typically the data points at the tail only takes up a small proportion, the bulk correlation parameter greatly depends on the relatively weak signals that are not at the tail. Therefore, we can use the correlation parameter from the Gaussian copula to complementarily capture the correlation of data that is not described by tail dependence of the s-Clayton copula. Combining the two copulas, we constructed a flexible mixture model that can fit a wide range of ChIP-seq data with different degrees of enrichment and signal characteristics.
 
 
-Figure1. Mixture copula model to evaluate the reproducibility of ChIP-seq data
+[Figure1. Mixture copula model to evaluate the reproducibility of ChIP-seq data](https://github.com/MonkeyLB/mTDR/blob/master/vignettes/Figure1.JPG)
 
-Preprocessing your data
+## Preprocessing your data
 
 We suggest to divide the genome into non-overlapping bins of 200 base pairs (bp), and count the number of reads within each bin. These procedures can be done by using bedtools. Following ENCODE procedure, it’s better to remove the bins falling in the blacklisted regions. To expedite the estimation, it is also suggested to remove the bins with low read counts (combined counts across replicates < 5). Bins with such low read count are obvious noise, but they could greatly increase the computation load. A script to perform the preprocessing can be found here.
 
-The format of input
+## The format of input
 
 We include an example of preprocessed ChIP-seq data. The data has two columns. Each column is a set of signals(i.e., number of reads in each 200 bp genomic bin).
 
-dim(chipseq)
-[1] 1000    2
-head(chipseq) # Each row is a genomic bin of 200 bp, the numbers are the read counts
-  R1 R2
-1  5  7
-2  7  4
-3  6  3
-4  9  4
-5 16  6
-6  3  4
-Estimation
+
+## Estimation
 
 The function est.TDR would run the EM algorithm to estimate the paramters of the mixtue copula model, and calculate the desired quantities (i.e., tail dependence). The function takes the two vectors (i.e., replicated samples) as the first two auguments. In most of cases, the default values for the other auguments are sufficient for estimation. Please refer to the documentation for a detailed explaination of the augments.
 
-tdr.out <- est.TDR(chipseq$R1, chipseq$R2, max.it = 200)
-# max.it control the maximum iterations for EM algorithm
-
-# print out the estimated quantities
-tdr.out$para
-         p        rho     lambda 
-0.01757889 0.74469848 0.59974436 
-# diagnostic plots to monitor the likelihood trace
-lik.trc <- tdr.out$likelihood.trace[,3]
-plot(1:length(lik.trc), lik.trc, xlab = "Iterations", ylab = "Log likelihood",
-     main = "Log likelihood trace")
-
 The estimated quantities are stored in the list element named para. In case you are interested in studying the convergence behavior along the iterations, the parameter and likelihood traces are stored in the element names para.trace and likelihood.trace respectively. Above is an example to show the likelihood trace. It should be monotonically increasing after first few iterations.
 
-Interpretation
+## Interpretation
 
 Our mixture copula model estimates three parameters – the shape parameter β for Clayton copula, the bulk correlation parameter ρ for Gaussian copula, and the proportion parameter π. The upper tail dependence, denoted as λ, can be deterministically computed from βThe three quantities λ, ρ, π all range from 0 to 1. A higher value of λ means stronger correlation between the enriched signals of two replicates; the proportion parameter π reflects the contribution of Gaussian copula. A high value of π implies substantial signal are not sufficiently enriched.
 
 To help end users identify suboptimal samples, we provided an empirical rule to classify samples, based on our extensive analyses on ENCODE2 data. For TF data, we recommend to classify samples with λ > 0.5 as highly reproducible, those with 0.2 < λ < 0.5 as moderately reproducible, and those with λ < 0.2 as poor agreement between replicates. While the value of π is not critical to the classification, it reflects the degree of lack of enrichment. A value of π > 0.2 typically indicates a substantial proportion of signals are not sufficiently enriched. For HM data, we recommend to use the bulk correlation ρ in addition to λ. Still, λ > 0.5 indicates high reproducibility. For the broad peak type data, it is sometimes hard to achieve λ > 0.5. If λ < 0.5, a high value of ρ (> 0.6) would also indicate high reproducibility. Both λ < 0.2 and ρ < 0.2 imply poor reproducibility.
 
-Computation efficiency
+## Computation efficiency
 
 Given a pair of replicated samples that has 450K matched genomic bins (typical size after preprocess for ChIP-seq data), it takes 2.5 min on a laptop with 2.6GHz Intel Core i7-6600U and 8Gb of RAM.
