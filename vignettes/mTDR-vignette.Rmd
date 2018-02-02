@@ -82,7 +82,7 @@ ChIP-seq data with different degrees of enrichment and signal
 characteristics.
 
 
-![Figure1. Mixture copula model to evaluate the reproducibility of ChIP-seq data](/Users/Tao Yang/Documents/PHD_Research/Tail_dependence_project/manuscript/mTDR/vignettes/Figure1.JPG)
+![Figure1. Mixture copula model to evaluate the reproducibility of ChIP-seq data](https://github.com/MonkeyLB/mTDR/blob/master/vignettes/Figure1.JPG)
 
 ```{r load_packages, include=FALSE}
 knitr::opts_knit$set(progress = TRUE, verbose = TRUE)
