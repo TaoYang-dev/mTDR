@@ -1,7 +1,7 @@
 Package: mTDR
 Type: Package
 Title: Comprehensively evaluate the reproducibility of chromatin profiling sequencing data
-Version: 0.99.1
+Version: 0.99.0
 Authors@R: c(person("Tao", "Yang", email = "xadmyangt@gmail.com", role = c("aut", "cre")))
 Description: Enrichment-based chromatin profiling sequencing experiments have become 
              essential tools to investigate the functional roles of genomic regions. 
